@@ -68,53 +68,52 @@ export default function App() {
   </div>;
 
   return (
-    <div className="flex h-screen bg-slate-50 text-slate-800 font-sans overflow-hidden">
+    <div className="flex h-screen bg-[#EFE9DD] text-[#1F1F1F] font-sans overflow-hidden">
       <Sidebar view={view} setView={setView} collapsed={collapsed} setCollapsed={setCollapsed} />
 
       {/* Main Content */}
       <motion.main
-        animate={{ marginLeft: collapsed ? 80 : 280 }}
+        animate={{ marginLeft: collapsed ? 80 : 260 }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="flex-1 p-8 overflow-y-auto bg-slate-50/50 h-screen"
+        className="flex-1 overflow-y-auto h-screen bg-[#EFE9DD] p-5 md:p-8"
       >
-        <header className="mb-8 flex justify-between items-center sticky top-0 z-40 py-2 bg-slate-50/80 backdrop-blur-sm -mx-2 px-2">
+        <header className="mb-8 flex justify-between items-center sticky top-0 z-30 py-3 bg-[#EFE9DD]/80 backdrop-blur-md -mx-8 px-8 border-b border-[#DED9CF]/50">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-              {view === 'dashboard' && 'Dashboard Overview'}
-              {view === 'analytics' && 'Analytics Engine'}
-              {view === 'orders' && 'Order Management'}
-              {view === 'inventory' && 'Inventory Control'}
-              {view === 'alerts' && 'Predictions & Alerts'}
-              {view === 'profile' && 'Pharmacist Profile'}
+            <h1 className="text-2xl font-bold text-[#1F1F1F] tracking-tight">
+              {view === 'dashboard' && 'Dashboard'}
+              {view === 'analytics' && 'Analytics'}
+              {view === 'orders' && 'Orders'}
+              {view === 'inventory' && 'Inventory'}
+              {view === 'alerts' && 'Alerts'}
+              {view === 'profile' && 'Profile'}
             </h1>
-            <p className="text-slate-500 font-medium mt-1">
-              {new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+            <p className="text-[#6B6B6B] text-sm font-medium mt-0.5">
+              Welcome back, Dr. Sarah.
             </p>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             {/* Search Bar */}
             <div className="relative hidden md:block w-72 group">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-emerald-500 transition-colors" size={20} />
+              <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#6B6B6B] group-focus-within:text-[#1F1F1F] transition-colors" size={18} />
               <input
                 type="text"
-                placeholder="Search orders, meds, patients..."
-                className="w-full pl-10 pr-4 py-2.5 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-500 bg-white shadow-sm transition-all"
+                placeholder="Search or type a command..."
+                className="w-full pl-10 pr-4 py-2.5 border border-[#DED9CF] rounded-[12px] text-sm focus:outline-none focus:ring-2 focus:ring-[#1F1F1F]/10 focus:border-[#6B6B6B] bg-[#FBFAF7] shadow-sm transition-all text-[#1F1F1F] placeholder:text-[#9CA3AF]"
               />
             </div>
 
             {/* Notification Icon */}
-            <button className="relative p-2.5 bg-white border border-slate-200 rounded-xl hover:border-emerald-200 hover:text-emerald-600 shadow-sm transition-all group">
-              <Bell size={22} className="text-slate-600 group-hover:text-emerald-600" />
-              <span className="absolute top-2 right-2.5 flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500"></span>
+            <button className="relative p-2.5 bg-[#FBFAF7] border border-[#DED9CF] rounded-[12px] hover:bg-white shadow-sm transition-all text-[#6B6B6B] hover:text-[#1F1F1F]">
+              <Bell size={20} />
+              <span className="absolute top-2.5 right-2.5 flex h-2 w-2">
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#1F1F1F]"></span>
               </span>
             </button>
           </div>
         </header>
 
-        <div className="pb-10">
+        <div className="pb-10 max-w-7xl mx-auto">
           {view === 'dashboard' && (
             <DashboardHome
               stats={stats}
