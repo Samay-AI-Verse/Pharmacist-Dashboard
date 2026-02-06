@@ -111,18 +111,25 @@ const Sidebar = ({ view, setView, collapsed, setCollapsed }) => {
                     {!collapsed && <span className="text-sm font-medium">Collapse</span>}
                 </button>
 
-                <div className={`flex items-center gap-3 p-2 rounded-[14px] bg-[#F2F0EB] ${collapsed ? 'justify-center' : ''}`}>
-                    <div className="w-8 h-8 rounded-full bg-[#DED9CF] flex items-center justify-center text-[#1F1F1F] font-bold text-xs shrink-0">
+                <button
+                    onClick={() => setView('profile')}
+                    className={`flex items-center gap-3 p-2 rounded-[14px] text-left transition-all group ${view === 'profile'
+                            ? 'bg-[#E8E1D6] ring-1 ring-[#DED9CF]'
+                            : 'bg-[#F2F0EB] hover:bg-[#E8E1D6] hover:ring-1 hover:ring-[#DED9CF]'
+                        } ${collapsed ? 'justify-center' : ''}`}
+                >
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center text-[#1F1F1F] font-bold text-xs shrink-0 transition-colors ${view === 'profile' ? 'bg-[#DED9CF]' : 'bg-[#DED9CF] group-hover:bg-[#d5cfc4]'
+                        }`}>
                         SW
                     </div>
 
                     {!collapsed && (
-                        <div className="text-left overflow-hidden">
-                            <p className="text-sm font-bold text-[#1F1F1F] truncate">Dr. Sarah W.</p>
+                        <div className="overflow-hidden">
+                            <p className="text-sm font-bold text-[#1F1F1F] truncate group-hover:text-black">Dr. Sarah W.</p>
                             <p className="text-xs text-[#6B6B6B] truncate">Admin</p>
                         </div>
                     )}
-                </div>
+                </button>
             </div>
         </motion.aside>
     );
